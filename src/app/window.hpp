@@ -12,8 +12,12 @@ namespace shady::app {
 class Window
 {
  public:
+   Window() = default;
    Window(int32_t width, int32_t height, const std::string& title);
    ~Window();
+
+   void
+   Create(int32_t width, int32_t height, const std::string& title);
 
    void
    ShutDown();
@@ -56,13 +60,13 @@ class Window
    GetWindowHandle();
 
  private:
+   bool m_created = false;
    int32_t m_width = 0;
    int32_t m_height = 0;
-   std::string m_title = "title";
+   std::string m_title = "Default Title";
 
    GLFWwindow* m_pWindow = nullptr;
    std::unique_ptr< render::Context > m_context;
-
 };
 
 } // namespace shady::app
